@@ -4,7 +4,7 @@
     using System.IO;
     using System.Linq;
 
-    static class Program
+    static class FizzBuzzProgram
     {
         static void Main(string[] args)
         {
