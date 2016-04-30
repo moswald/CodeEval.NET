@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "001 - FizzBuzz", "001 - FizzBuzz\001 - FizzBuzz.csproj", "{048EDE19-120A-4B20-8085-0AC1D6162C1A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Tests", "Unit Tests", "{B9D09309-DF74-41AD-AC14-9CA1DF8C5BA3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Challenges", "Challenges", "{DBBA901D-7F27-49ED-9E16-304CF42413F7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{048EDE19-120A-4B20-8085-0AC1D6162C1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{048EDE19-120A-4B20-8085-0AC1D6162C1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{048EDE19-120A-4B20-8085-0AC1D6162C1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{048EDE19-120A-4B20-8085-0AC1D6162C1A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{048EDE19-120A-4B20-8085-0AC1D6162C1A} = {DBBA901D-7F27-49ED-9E16-304CF42413F7}
+	EndGlobalSection
+EndGlobal
