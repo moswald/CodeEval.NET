@@ -13,34 +13,19 @@
                 .Where(line => line != null)
                 .Select(line => line.Split(';')))
             {
-                var left = InitializeSubsequences(split[0]);
-                var longest = CompareSubsequences(left, split[1]);
+                var longest = CompareSubsequences(split[0], split[1]);
 
                 Console.WriteLine(longest.Trim());
-
-                left.Clear();
             }
         }
 
-        static ISet<string> InitializeSubsequences(string sequence)
-        {
-            var set = new HashSet<string>();
-
-            foreach (var subsequence in EnumerateSubsequences(sequence.ToCharArray(), 0))
-            {
-                set.Add(subsequence);
-            }
-
-            return set;
-        }
-
-        static string CompareSubsequences(ISet<string> set, string sequence)
+        static string CompareSubsequences(string left, string right)
         {
             var longest = string.Empty;
 
-            foreach (var subsequence in EnumerateSubsequences(sequence.ToCharArray(), 0))
+            foreach (var subsequence in EnumerateSubsequences(left.ToCharArray(), 0))
             {
-                if (set.Contains(subsequence) && subsequence.Length > longest.Length)
+                if (right.SparseContains(subsequence) && subsequence.Length > longest.Length)
                 {
                     longest = subsequence;
                 }
@@ -61,6 +46,24 @@
                     yield return str + substr;
                 }
             }
+        }
+
+        static bool SparseContains(this string self, string sub)
+        {
+            var start = 0;
+
+            foreach (var ch in sub)
+            {
+                var idx = self.IndexOf(ch, start);
+                if (idx == -1)
+                {
+                    return false;
+                }
+
+                start = idx + 1;
+            }
+
+            return true;
         }
     }
 }
