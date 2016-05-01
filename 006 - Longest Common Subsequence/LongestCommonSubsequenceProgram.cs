@@ -16,11 +16,10 @@
                 .ToArray();
 
             var tasks = new Task<string>[splitLines.Length];
-
             for (var i = 0; i != splitLines.Length; ++i)
             {
                 var index = i;
-                tasks[index] = Task.Factory.StartNew(() => CompareSubsequences(splitLines[index][0], splitLines[index][1]));
+                tasks[index] = Task.Factory.StartNew(() => new string(CompareSubsequences(splitLines[index][0], splitLines[index][1]).ToArray()));
             }
 
             Task.WaitAll(tasks);
@@ -31,47 +30,50 @@
             }
         }
 
-        static string CompareSubsequences(string left, string right)
+        static IEnumerable<char> CompareSubsequences(string left, string right)
         {
-            var longest = string.Empty;
+            var longest = Enumerable.Empty<char>();
             var longestLength = 0;
-            var gate = new object();
 
-            Parallel.ForEach(
-                EnumerateSubsequences(left.ToCharArray(), 0),
-                subsequence =>
+            foreach (var subsequence in EnumerateSubsequences(left.ToCharArray(), 0))
+            {
+                if (subsequence.Length > longestLength && right.SparseContains(subsequence.Value))
                 {
-                    if (right.SparseContains(subsequence) && subsequence.Length > longestLength)
-                    {
-                        lock (gate)
-                        {
-                            if (subsequence.Length > longestLength)
-                            {
-                                longest = subsequence;
-                                longestLength = subsequence.Length;
-                            }
-                        }
-                    }
-                });
+                    longest = subsequence.Value;
+                    longestLength = subsequence.Length;
+                }
+            }
 
             return longest;
         }
 
-        static IEnumerable<string> EnumerateSubsequences(IList<char> sequence, int start)
+        static IEnumerable<Subsequence> EnumerateSubsequences(IList<char> sequence, int start)
         {
             for (var i = start; i != sequence.Count; ++i)
             {
-                var str = $"{sequence[i]}";
-                yield return str;
+                yield return SingleSequences[sequence[i]];
 
                 foreach (var substr in EnumerateSubsequences(sequence, i + 1))
                 {
-                    yield return str + substr;
+                    yield return new Subsequence
+                    {
+                        Value = Yield(sequence[i], substr.Value),
+                        Length = substr.Length + 1
+                    };
                 }
             }
         }
 
-        static bool SparseContains(this string self, string sub)
+        static IEnumerable<char> Yield(char ch, IEnumerable<char> more)
+        {
+            yield return ch;
+            foreach (var next in more)
+            {
+                yield return next;
+            }
+        }
+
+        static bool SparseContains(this string self, IEnumerable<char> sub)
         {
             var start = 0;
 
@@ -87,6 +89,54 @@
             }
 
             return true;
+        }
+
+        struct Subsequence
+        {
+            public IEnumerable<char> Value;
+            public int Length;
+        }
+
+        static readonly Subsequence[] SingleSequences = InitializeSingleSubsequences();
+
+        static Subsequence[] InitializeSingleSubsequences()
+        {
+            var result = new Subsequence['z' + 1];
+
+            result[' '] = new Subsequence
+            {
+                Value = new[] { ' ' },
+                Length = 1
+            };
+
+            for (var i = '0'; i <= '9'; ++i)
+            {
+                result[i] = new Subsequence
+                {
+                    Value = new[] { i },
+                    Length = 1
+                };
+            }
+
+            for (var i = 'A'; i <= 'Z'; ++i)
+            {
+                result[i] = new Subsequence
+                {
+                    Value = new[] { i },
+                    Length = 1
+                };
+            }
+
+            for (var i = 'a'; i <= 'z'; ++i)
+            {
+                result[i] = new Subsequence
+                {
+                    Value = new[] { i },
+                    Length = 1
+                };
+            }
+
+            return result;
         }
     }
 }
