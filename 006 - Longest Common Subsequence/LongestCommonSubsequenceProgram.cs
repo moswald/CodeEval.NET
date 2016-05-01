@@ -4,32 +4,55 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Threading.Tasks;
 
     static class LongestCommonSubsequenceProgram
     {
         static void Main(string[] args)
         {
-            foreach (var split in File.ReadLines(args[0])
+            var splitLines = File.ReadLines(args[0])
                 .Where(line => line != null)
-                .Select(line => line.Split(';')))
-            {
-                var longest = CompareSubsequences(split[0], split[1]);
+                .Select(line => line.Split(';'))
+                .ToArray();
 
-                Console.WriteLine(longest.Trim());
+            var tasks = new Task<string>[splitLines.Length];
+
+            for (var i = 0; i != splitLines.Length; ++i)
+            {
+                var index = i;
+                tasks[index] = Task.Factory.StartNew(() => CompareSubsequences(splitLines[index][0], splitLines[index][1]));
+            }
+
+            Task.WaitAll(tasks);
+
+            foreach (var t in tasks)
+            {
+                Console.WriteLine(t.Result);
             }
         }
 
         static string CompareSubsequences(string left, string right)
         {
             var longest = string.Empty;
+            var longestLength = 0;
+            var gate = new object();
 
-            foreach (var subsequence in EnumerateSubsequences(left.ToCharArray(), 0))
-            {
-                if (right.SparseContains(subsequence) && subsequence.Length > longest.Length)
+            Parallel.ForEach(
+                EnumerateSubsequences(left.ToCharArray(), 0),
+                subsequence =>
                 {
-                    longest = subsequence;
-                }
-            }
+                    if (right.SparseContains(subsequence) && subsequence.Length > longestLength)
+                    {
+                        lock (gate)
+                        {
+                            if (subsequence.Length > longestLength)
+                            {
+                                longest = subsequence;
+                                longestLength = subsequence.Length;
+                            }
+                        }
+                    }
+                });
 
             return longest;
         }
