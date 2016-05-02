@@ -13,3 +13,5 @@ The first argument will be a path to a filename that contains two strings per li
 The longest common subsequence. Ensure that there are no trailing empty spaces on each line you print. E.g.
 
     MJAU
+
+https://www.codeeval.com/open_challenges/6/

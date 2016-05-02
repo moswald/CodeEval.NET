@@ -22,3 +22,5 @@ For example:
 
     San Francisco
     Hello World
+
+https://www.codeeval.com/open_challenges/2/
