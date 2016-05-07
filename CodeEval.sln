@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "004 - Sum of Primes", "004 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "005 - Detecting Cycles", "005 - Detecting Cycles\005 - Detecting Cycles.csproj", "{D0BF4836-88EB-439A-A350-B421DEF75581}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "007 - Prefix Expressions", "007 - Prefix Expressions\007 - Prefix Expressions.csproj", "{794A2619-EA44-45AC-B576-E5A880834ED5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{D0BF4836-88EB-439A-A350-B421DEF75581}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0BF4836-88EB-439A-A350-B421DEF75581}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0BF4836-88EB-439A-A350-B421DEF75581}.Release|Any CPU.Build.0 = Release|Any CPU
+		{794A2619-EA44-45AC-B576-E5A880834ED5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{794A2619-EA44-45AC-B576-E5A880834ED5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{794A2619-EA44-45AC-B576-E5A880834ED5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{794A2619-EA44-45AC-B576-E5A880834ED5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,5 +70,6 @@ Global
 		{EDE9F6C2-3DF2-4EAB-A41B-069BEC99E9AC} = {DBBA901D-7F27-49ED-9E16-304CF42413F7}
 		{31F492B1-1925-4AF8-A6B1-F0BF5B4D4013} = {DBBA901D-7F27-49ED-9E16-304CF42413F7}
 		{D0BF4836-88EB-439A-A350-B421DEF75581} = {67919FC8-FF15-4940-B69A-7EDD5E220238}
+		{794A2619-EA44-45AC-B576-E5A880834ED5} = {7A69E0DC-7050-49C4-A676-61499508F601}
 	EndGlobalSection
 EndGlobal
