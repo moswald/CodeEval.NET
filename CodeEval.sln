@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "009 - Stack Implementation"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "010 - Mth To Last Element", "010 - Mth To Last Element\010 - Mth To Last Element.csproj", "{54CCB347-420F-41E0-847D-D62918BC9458}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "011 - Lowest Common Ancestor", "011 - Lowest Common Ancestor\011 - Lowest Common Ancestor.csproj", "{146D1E65-07FE-4E44-855F-62A8B0E321EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{54CCB347-420F-41E0-847D-D62918BC9458}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54CCB347-420F-41E0-847D-D62918BC9458}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54CCB347-420F-41E0-847D-D62918BC9458}.Release|Any CPU.Build.0 = Release|Any CPU
+		{146D1E65-07FE-4E44-855F-62A8B0E321EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{146D1E65-07FE-4E44-855F-62A8B0E321EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{146D1E65-07FE-4E44-855F-62A8B0E321EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{146D1E65-07FE-4E44-855F-62A8B0E321EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,5 +98,6 @@ Global
 		{F96FC64C-BA5F-410E-A82B-DB9192E52254} = {DBBA901D-7F27-49ED-9E16-304CF42413F7}
 		{9EA9A860-55B1-499A-A054-EEBC1792AB6F} = {67919FC8-FF15-4940-B69A-7EDD5E220238}
 		{54CCB347-420F-41E0-847D-D62918BC9458} = {67919FC8-FF15-4940-B69A-7EDD5E220238}
+		{146D1E65-07FE-4E44-855F-62A8B0E321EB} = {67919FC8-FF15-4940-B69A-7EDD5E220238}
 	EndGlobalSection
 EndGlobal
